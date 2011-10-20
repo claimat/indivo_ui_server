@@ -55,7 +55,7 @@ $.Controller.extend('UI.Controllers.Record',
 			// create records list, assign colors and add tabs
 			$(ACCOUNT.RECORDS).each(function(i, record) {
 				record_list[record.id] = record;
-				record.bgcolor = COLORS[i];
+				record.bgcolor = COLORS[i % COLORS.length];
 				self.addTab(record);
 			})
 			UI.Controllers.Record.allRecords = record_list;
@@ -99,7 +99,7 @@ $.Controller.extend('UI.Controllers.Record',
 		}
 		
 		// set background color
-		$('#app_selector .selected, #app_content, #app_content_iframe').animate({
+		$('#app_content, #app_content_iframe, #app_selector .selected').animate({
 			backgroundColor: activeRecord.bgcolor
 		}, 1000);
 		
